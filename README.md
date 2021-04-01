@@ -1,6 +1,6 @@
 # poc-bank-api-java
 
-`Creation Date: 2017`
+`Project creation Date: 2017`
 
 Application that simulates a bank api, allowing the registration of customers, and the operations of deposits, withdrawals, transfers, balance inquiries and account statements.
 
@@ -14,11 +14,7 @@ Application that simulates a bank api, allowing the registration of customers, a
 - An extract should return all account movements (transfers, deposits and withdrawals);
 - It is not possible to make a transfer to yourself (the source account cannot be the same as the destination account);
 
-## UML Diagram
-
-![UML](docs/UML-bank-api.png)
-
-## To run the API locally
+## Run the API locally
 
 ### Premisses
 
@@ -41,6 +37,10 @@ docker-compose up
 ```
 
 You should now be able to start the application in the IDE. It will be possible to test the application at: ```localhost:8080/```
+
+## UML Diagram
+
+![UML](docs/UML-bank-api.png)
 
 ### Services
 
