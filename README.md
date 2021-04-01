@@ -1,6 +1,6 @@
 # poc-bank-api-java
 
-`Creation Date: 2017`
+`Project creation Date: 2017`
 
 Application that simulates a bank api, allowing the registration of customers, and the operations of deposits, withdrawals, transfers, balance inquiries and account statements.
 
