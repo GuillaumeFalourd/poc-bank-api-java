@@ -1,59 +1,59 @@
-# POC bank (Java)
+# poc-bank-api-java
 
-É uma aplicação que simula o sistema um banco, permite o cadastro de clientes, e as operações de depósitos, saque, tranferência, consulta de saldo e extrato da conta. Foi utilizada a linguagem Java para o desenvolvimento do codigo, Postgres para o gerenciamento do banco de dados, Maven para o gerenciamento das dependências e a inicializaçõa é feita com o framework Spring boot.
+Application that simulates a bank api, allowing the registration of customers, and the operations of deposits, withdrawals, transfers, balance inquiries and account statements.
 
-## Regras de Negócio:
+The Java language was used to develop the code, `Postgres` to manage the database, `Maven` to manage dependencies and initialization is done with the Spring boot framework.
 
-- O saldo da conta nunca poderá ser negativo;
-- Não pode ser possível realizar saque ou transferência quando o saldo na conta é
-insuficiente;
-- A conta de destino deve ser válida;
-- O cliente só poderá ter uma conta (validar por CPF por exemplo);
-- Ao criar a conta na resposta de sucesso deverá constar o Id da conta para futuras movimentações;
-- Ao solicitar um extrato, deverá constar toda movimentação da conta, como
-transferência, depósito e saque;
-- Ao solicitar transferência tanto a conta de destino quanto a de origem devem ser
-válidas;
-- Não pode ser possível realizar uma transferência para você mesmo, ou seja, conta de origem não pode ser igual a conta de destino;
+## Business rules
 
-## DER
+- The account balance can't be negative;
+- It is not possible to make a withdrawal or transfer when the account balance is insufficient;
+- Accounts involved in any operation must be valid;
+- The customer can only have one account (validate by CPF for example);
+- The account Id for future transactions must be included in the creation request response;
+- An extract should return all account movements (transfers, deposits and withdrawals);
+- It is not possible to make a transfer to yourself (the source account cannot be the same as the destination account);
 
-![Diagrama de entidade e relacionamento](BankPocDER.png)
+## UML Diagram
 
-## Requisitos para executar a aplicação
+![UML](docs/UML-bank-api.png)
 
-A aplicação depende de algumas tecnologias para a execução como:
+## To run the API locally
+
+### Premisses
+
 - Java JDK
 - Maven
 - Docker
 - Docker-Compose
 - PostgreSQL
 
-Após a instalação das dependencias atraves do terminal na pasta raiz do projeto execute o comando:
+After installing the dependencies through the terminal in the project's root folder, execute the following command:
+
 ```sh $ mvn clean install```
-Depois digite a instrução abaixo para a alocar o container com o banco de dados:
+
+Then type the instruction below to allocate the container with the database:
+
 ```sh $ docker-compose up```
-Aṕos o passo anterior deve iniciar a aplicação na IDE.
 
-Será possivel testar a aplicação pelo endereço:
-```sh $ localhost:8080/```
+You should now be able to start the application in the IDE. It will be possible to test the application at: ```sh $ localhost:8080/```
 
-### EndPoints:
+### Services
 
-#### EndPoints "/client"
+#### "/client"
 
-Serviço | Endereço | Parâmetro
------------- | ------------- | ------------- 
-Novo Cliente | localhost:8080/client/create | {"name": "Fulano de Tal", "cpf": "111.111.111-11"}
-Consultar Cliente | localhost:8080/client/{id conta} |
-Editar Cliente | localhost:8080/client/update/{id conta} | {"name": "Fulano de Tal", "cpf": "111.111.111-11"}
+Service | Address | Parameters
+------------ | ------------- | -------------
+New Client Account | localhost:8080/client/create | {"name": "Guillaume Falourd", "cpf": "111.111.111-11"}
+Get Client Account | localhost:8080/client/{account_id} |
+Update Cliente Account | localhost:8080/client/update/{account_id} | {"name": "Guillaume Falourd", "cpf": "111.111.111-11"}
 
-#### EndPoints "/operation"
+#### "/operation"
 
-Serviço | Método | Endereço | Parâmetro
------------- | ------------ | ------------- | ------------- 
-Saldo | GET | localhost:8080/operation/balance/{id conta} | 
-Deposito | POST | localhost:8080/operation/deposit | {"accountId": 1,"value": 500}
-Saque | POST | localhost:8080/operation/cashout | {"accountId": 2,"value": 140}
-Transferência | POST | localhost:8080/operation/transfer | {"depositAccountid": 1, ,"recipientAccountid": 2, "value": 50.00}
-Extrato | GET | localhost:8080/operation/accountStatement/{accountId} |
+Service | Http Method | Address | Parameters
+------------ | ------------ | ------------- | -------------
+Balance | GET | localhost:8080/operation/balance/{account_id} |
+Deposit | POST | localhost:8080/operation/deposit | {"accountId": 1,"value": 500}
+Cashout | POST | localhost:8080/operation/cashout | {"accountId": 2,"value": 140}
+Transfer | POST | localhost:8080/operation/transfer | {"depositAccountid": 1, ,"recipientAccountid": 2, "value": 50.00}
+Extract | GET | localhost:8080/operation/accountStatement/{accountId} |
