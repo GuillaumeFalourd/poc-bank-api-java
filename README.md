@@ -57,5 +57,5 @@ Service | Http Method | Address | Parameters
 Balance | GET | localhost:8080/operation/balance/{accountId} |
 Deposit | POST | localhost:8080/operation/deposit | {"accountId": 1,"value": 500}
 Cashout | POST | localhost:8080/operation/cashout | {"accountId": 2,"value": 140}
-Transfer | POST | localhost:8080/operation/transfer | {"depositAccountid": 1, ,"recipientAccountid": 2, "value": 50.00}
+Transfer | POST | localhost:8080/operation/transfer | {"depositAccountid": 1, "recipientAccountid": 2, "value": 50.00}
 Extract | GET | localhost:8080/operation/accountStatement/{accountId} |
