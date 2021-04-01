@@ -38,4 +38,4 @@ Then type the instruction below to allocate the container with the database:
 
 ```docker-compose up```
 
-You should now be able to start the application in the IDE. It will be possible to test the application at: ```sh $ localhost:8080/```
+You should now be able to start the application in the IDE. It will be possible to test the application at: ```localhost:8080/```
