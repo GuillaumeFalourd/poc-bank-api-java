@@ -42,17 +42,17 @@ You should now be able to start the application in the IDE. It will be possible 
 
 #### "/client"
 
-Service | Address | Parameters
------------- | ------------- | -------------
-New Client Account | localhost:8080/client/create | {"name": "Guillaume Falourd", "cpf": "111.111.111-11"}
-Get Client Account | localhost:8080/client/{account_id} |
-Update Cliente Account | localhost:8080/client/update/{account_id} | {"name": "Guillaume Falourd", "cpf": "111.111.111-11"}
+Service | Http Method | Address | Parameters
+------------ | ------------  | ------------- | -------------
+New Client Account | POST |localhost:8080/client/create | {"name": "Guillaume Falourd", "cpf": "111.111.111-11"}
+Get Client Account | GET |localhost:8080/client/{accountId} |
+Update Cliente Account | PUT | localhost:8080/client/update/{accountId} | {"name": "Guillaume Falourd", "cpf": "111.111.111-11"}
 
 #### "/operation"
 
 Service | Http Method | Address | Parameters
 ------------ | ------------ | ------------- | -------------
-Balance | GET | localhost:8080/operation/balance/{account_id} |
+Balance | GET | localhost:8080/operation/balance/{accountId} |
 Deposit | POST | localhost:8080/operation/deposit | {"accountId": 1,"value": 500}
 Cashout | POST | localhost:8080/operation/cashout | {"accountId": 2,"value": 140}
 Transfer | POST | localhost:8080/operation/transfer | {"depositAccountid": 1, ,"recipientAccountid": 2, "value": 50.00}
