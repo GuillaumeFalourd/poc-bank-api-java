@@ -32,10 +32,10 @@ The Java language was used to develop the code, `Postgres` to manage the databas
 
 After installing the dependencies through the terminal in the project's root folder, execute the following command:
 
-```sh $ mvn clean install```
+```mvn clean install```
 
 Then type the instruction below to allocate the container with the database:
 
-```sh $ docker-compose up```
+```docker-compose up```
 
 You should now be able to start the application in the IDE. It will be possible to test the application at: ```sh $ localhost:8080/```
